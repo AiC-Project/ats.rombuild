@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -eu
+
+SRCDIR="$1"
+TARGET="$2"
+DEST="$3"
+
+bin/run-docker-builder "${SRCDIR}" docker/build.sh "${TARGET}"
+bin/extract-metadata "${SRCDIR}" "${TARGET}"
+bin/move-built-img "${SRCDIR}" "${TARGET}" "${DEST}"
+

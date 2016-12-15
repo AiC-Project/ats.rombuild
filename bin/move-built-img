@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -eu
+
+SRCDIR="$1"
+PRODUCT="$2"
+DEST="$3"
+
+ORIG=${SRCDIR}/out/target/product/${PRODUCT}
+
+mkdir -p "${DEST}"
+chown "${DEST}" --reference="${ORIG}"
+
+for FILE in android_system_disk.vdi android_data_disk.vdi ANDROID_RELEASE android_system_disk.metadata; do
+    mv "${ORIG}/${FILE}" "${DEST}/${FILE}"
+    chown "${DEST}/${FILE}" --reference="${ORIG}"
+done

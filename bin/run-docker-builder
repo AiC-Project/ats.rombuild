@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -eu
+
+SRCDIR=$(realpath "$1")
+
+shift
+
+ANDROID_VERSION=$(grep -Po "(?<=PLATFORM_VERSION := )(.+)" "${SRCDIR}/build/core/version_defaults.mk")
+
+docker run --rm -ti \
+    -v "$(realpath "./docker/${ANDROID_VERSION}")":/home/developer/docker \
+    -v "${SRCDIR}:/home/developer/src" \
+    -v "$(realpath "./.ccache")":/home/developer/.ccache \
+    -ti "aic.rombuilder-${ANDROID_VERSION}" \
+    "$@"

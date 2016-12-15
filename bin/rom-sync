@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+SRCDIR="$1"
+
+shift
+
+REPO=$(realpath ./bin/repo)
+
+# Add -c to only downloads the current branches, which is faster
+
+cd "${SRCDIR}" && ${REPO} sync -q -j4 -f --no-clone-bundle "$@"
+

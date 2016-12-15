@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -eu
+
+SRCDIR="$1"
+PRODUCT="$2"
+
+BUILD_PROP="${SRCDIR}/out/target/product/${PRODUCT}/system/build.prop"
+
+BUILD_ID=$(grep ^ro.build.id "$BUILD_PROP" | cut -d= -f2 | cut -d. -f1)
+BUILD_TIMESTAMP=$(grep ^ro.build.date.utc "$BUILD_PROP" | cut -d= -f2 | cut -d. -f1)
+ANDROID_RELEASE=$(grep ^ro.build.version.release "$BUILD_PROP" | cut -d= -f2)
+ANDROID_RELEASE_MAJOR=$(echo "$ANDROID_RELEASE" | cut -d. -f1)
+
+# store android version separately for bash parsing / local usage
+
+echo  "$ANDROID_RELEASE" > "${SRCDIR}/out/target/product/${PRODUCT}/ANDROID_RELEASE"
+
+# store full metadata for cloud upload
+
+cat > "${SRCDIR}/out/target/product/${PRODUCT}/android_system_disk.metadata" <<EOT
+{
+    "product": "$PRODUCT",
+    "build_id": "$BUILD_ID",
+    "build_timestamp": "$BUILD_TIMESTAMP",
+    "android_version": "$ANDROID_RELEASE_MAJOR"
+}
+EOT
+

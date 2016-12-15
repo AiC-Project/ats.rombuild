@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -eu
+
+REPO=$(realpath ./bin/repo)
+
+mkdir -p src/mirror
+
+if [ ! -d src/mirror/.repo ]; then
+    cd src/mirror && ${REPO} init -q -u https://android.googlesource.com/mirror/manifest --mirror && cd .. && cd ..
+fi
+
+cd src/mirror && ${REPO} sync -q -j4 -f --no-clone-bundle
+
