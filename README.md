@@ -145,8 +145,8 @@ $ make clean oldconfig
 (optional) make xconfig
 
 $ make -j4
-$ cp arch/x86/boot/bzImage ../../src/aic-kitkat/device/aicVM/blob/
-$ cp drivers/video/uvesafb.ko ../src/aic-kitkat/device/aicVM/blob/
-$ cp .config ../../src/aic-kitkat/device/aicVM/blob/
+$ cp arch/x86/boot/bzImage ../aic-kitkat/device/aicVM/blob/
+$ cp drivers/video/uvesafb.ko ../aic-kitkat/device/aicVM/blob/
+$ cp .config ../aic-kitkat/device/aicVM/blob/
 ```
 

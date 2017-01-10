@@ -2,11 +2,6 @@
 .ccache:
 	mkdir .ccache && chown $(shell logname | xargs id -u).$(shell logname | xargs id -g) .ccache
 
-
-#
-# Install repo
-#
-
 bin/repo:
 	curl -s https://storage.googleapis.com/git-repo-downloads/repo -o bin/repo && chmod 755 bin/repo
 
