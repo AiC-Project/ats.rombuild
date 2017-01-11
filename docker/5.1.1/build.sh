@@ -18,7 +18,5 @@ set -eu
 TOP=$(pwd)
 export TOP
 
-mmma external/protobuf
-mmma external/aic/libaicd
-make android_disk_vdi -j 4 2>&1 | tee build.log
+make android_disk_vdi -j 4 2>&1 | tee build.log | ccze -A
 

@@ -19,6 +19,7 @@ RUN apt-get -y update && \
         adduser \
         build-essential \
         bc \
+        ccze \
         git \
         zip \
         flex \
