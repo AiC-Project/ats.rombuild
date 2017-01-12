@@ -122,7 +122,7 @@ Done with VirtualBox bootable system-disk image -[ out/target/product/gobyt/andr
 For each compiled branch, two images will appear under `./android/{branch-name}/{gobyp, gobyt}/` as soon as they are built,
 respectively for phone and tablet.
 
-You can reference these directories directly from the other AiC deployment scripts, or pack everything with `make android-images.tar`.
+You can reference these directories directly from the other AiC deployment scripts, or pack everything with `make tar`.
 
 
 Compile the kernel (Kitkat only):

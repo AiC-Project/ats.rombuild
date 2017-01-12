@@ -32,7 +32,12 @@ rom-build-all: docker-rombuilders | .ccache
 	bin/rom-build src/aic-lollipop gobyp android/aic-lollipop/gobyp
 	bin/rom-build src/aic-lollipop gobyt android/aic-lollipop/gobyt
 
-.PHONY: android-images.tar
-android-images.tar:
-	tar cvf android-images.tar android
+aic-kitkat.tar:
+	tar cvf aic-kitkat.tar android/aic-kitkat
+
+aic-lollipop.tar:
+	tar cvf aic-lollipop.tar android/aic-lollipop
+
+.PHONY: tar
+tar: aic-kitkat.tar aic-lollipop.tar
 
