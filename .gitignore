@@ -1,5 +1,6 @@
 /.ccache/
 /android/
-/android-images.tar
+/aic-kitkat.tar
+/aic-lollipop.tar
 /bin/repo
 /src/
