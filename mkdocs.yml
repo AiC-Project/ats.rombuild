@@ -1,3 +1,4 @@
 theme: readthedocs
 docs_dir: ./docs
 site_name: AiC ATS-RomBuild
+extra_javascript: ['custom.js']
